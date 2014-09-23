@@ -11,7 +11,7 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'Easyvote Competition',
+	'title' => 'easyvote Competition',
 	'description' => 'Create and manage competition campaigns',
 	'category' => 'plugin',
 	'author' => 'Lorenz Ulrich, Jonas Renggli',
