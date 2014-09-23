@@ -9,11 +9,23 @@
 			<trans-unit id="tx_easyvotecompetition_domain_model_competition.type">
 				<source>Type</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.type.1">
+				<source>Text</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.type.2">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.type.3">
+				<source>Multimedia</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvotecompetition_domain_model_competition.title_short">
-				<source>Title Short</source>
+				<source>Title short</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvotecompetition_domain_model_competition.title_long">
-				<source>Title Long</source>
+				<source>Title long</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvotecompetition_domain_model_competition.description">
 				<source>Description</source>
@@ -23,6 +35,12 @@
 			</trans-unit>
 			<trans-unit id="tx_easyvotecompetition_domain_model_competition.voting_frequency">
 				<source>Voting Frequency</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.voting_frequency.1">
+				<source>one participation per user</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.voting_frequency.2">
+				<source>one participation per user each 24 hours</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvotecompetition_domain_model_competition.participation_end_date">
 				<source>Participation End Date</source>
@@ -47,6 +65,15 @@
 			</trans-unit>
 			<trans-unit id="tx_easyvotecompetition_domain_model_participation.language">
 				<source>Language</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation.language.1">
+				<source>German</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation.language.2">
+				<source>French</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation.language.3">
+				<source>Italian</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvotecompetition_domain_model_participation.voting_enabled">
 				<source>Voting Enabled</source>

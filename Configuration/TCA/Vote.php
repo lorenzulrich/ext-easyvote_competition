@@ -9,7 +9,7 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_vote'] = array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, competition, participation, community_user',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, competition, participation, community_user, '),
+		'1' => array('showitem' => 'hidden;;1, competition, participation, community_user, '),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -60,53 +60,44 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_vote'] = array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_vote.competition',
 			'config' => array(
-				'type' => 'inline',
+				'type' => 'select',
 				'foreign_table' => 'tx_easyvotecompetition_domain_model_competition',
+				'foreign_table_where' => "ORDER BY title_short",
+				'items' => array(
+					array('', 0)
+				),
 				'minitems' => 0,
 				'maxitems' => 1,
-				'appearance' => array(
-					'collapseAll' => 0,
-					'levelLinksPosition' => 'top',
-					'showSynchronizationLink' => 1,
-					'showPossibleLocalizationRecords' => 1,
-					'showAllLocalizationLink' => 1
-				),
 			),
 		),
 		'participation' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_vote.participation',
 			'config' => array(
-				'type' => 'inline',
+				'type' => 'select',
 				'foreign_table' => 'tx_easyvotecompetition_domain_model_participation',
+				'foreign_table_where' => "ORDER BY title",
+				'items' => array(
+					array('', 0)
+				),
 				'minitems' => 0,
 				'maxitems' => 1,
-				'appearance' => array(
-					'collapseAll' => 0,
-					'levelLinksPosition' => 'top',
-					'showSynchronizationLink' => 1,
-					'showPossibleLocalizationRecords' => 1,
-					'showAllLocalizationLink' => 1
-				),
 			),
 		),
 		'community_user' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_vote.community_user',
 			'config' => array(
-				'type' => 'inline',
+				'type' => 'select',
 				'foreign_table' => 'fe_users',
+				'foreign_table_where' => "AND tx_extbase_type LIKE 'Tx_Easyvote_CommunityUser' ORDER BY username",
+				'items' => array(
+					array('', 0)
+				),
 				'minitems' => 0,
 				'maxitems' => 1,
-				'appearance' => array(
-					'collapseAll' => 0,
-					'levelLinksPosition' => 'top',
-					'showSynchronizationLink' => 1,
-					'showPossibleLocalizationRecords' => 1,
-					'showAllLocalizationLink' => 1
-				),
 			),
 		),
-		
+
 	),
 );

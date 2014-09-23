@@ -94,7 +94,9 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_competition'] = array(
 			'config' => array(
 				'type' => 'select',
 				'items' => array(
-					array('-- Label --', 0),
+					array('LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_competition.type.1', 1),
+					array('LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_competition.type.2', 2),
+					array('LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_competition.type.3', 3),
 				),
 				'size' => 1,
 				'maxitems' => 1,
@@ -107,7 +109,7 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_competition'] = array(
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
-				'eval' => 'trim'
+				'eval' => 'trim,required'
 			),
 		),
 		'title_long' => array(
@@ -116,7 +118,7 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_competition'] = array(
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
-				'eval' => 'trim'
+				'eval' => 'trim,required'
 			),
 		),
 		'description' => array(
@@ -154,7 +156,8 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_competition'] = array(
 			'config' => array(
 				'type' => 'select',
 				'items' => array(
-					array('-- Label --', 0),
+					array('LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_competition.voting_frequency.1', 1),
+					array('LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_competition.voting_frequency.2', 2),
 				),
 				'size' => 1,
 				'maxitems' => 1,

@@ -92,10 +92,8 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_participation'] = array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_participation.title',
 			'config' => array(
-				'type' => 'text',
-				'cols' => 40,
-				'rows' => 15,
-				'eval' => 'trim'
+				'type' => 'input',
+				'eval' => 'required,trim'
 			)
 		),
 		'description' => array(
@@ -130,9 +128,15 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_participation'] = array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_participation.language',
 			'config' => array(
-				'type' => 'input',
-				'size' => 4,
-				'eval' => 'int'
+				'type' => 'select',
+				'items' => array(
+					array('LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_participation.language.1', 1),
+					array('LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_participation.language.2', 2),
+					array('LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_participation.language.3', 3),
+				),
+				'size' => 1,
+				'maxitems' => 1,
+				'eval' => ''
 			)
 		),
 		'voting_enabled' => array(
@@ -140,7 +144,7 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_participation'] = array(
 			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_participation.voting_enabled',
 			'config' => array(
 				'type' => 'check',
-				'default' => 0
+				'default' => 1
 			)
 		),
 		'votes' => array(
@@ -164,17 +168,14 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_participation'] = array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_participation.community_user',
 			'config' => array(
-				'type' => 'inline',
+				'type' => 'select',
 				'foreign_table' => 'fe_users',
+				'foreign_table_where' => "AND tx_extbase_type LIKE 'Tx_Easyvote_CommunityUser' ORDER BY username",
+				'items' => array(
+					array('', 0)
+				),
 				'minitems' => 0,
 				'maxitems' => 1,
-				'appearance' => array(
-					'collapseAll' => 0,
-					'levelLinksPosition' => 'top',
-					'showSynchronizationLink' => 1,
-					'showPossibleLocalizationRecords' => 1,
-					'showAllLocalizationLink' => 1
-				),
 			),
 		),
 		
