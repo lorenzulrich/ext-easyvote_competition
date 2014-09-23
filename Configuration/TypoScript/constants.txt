@@ -1,0 +1,15 @@
+
+plugin.tx_easyvotecompetition {
+	view {
+		# cat=plugin.tx_easyvotecompetition/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:easyvote_competition/Resources/Private/Templates/
+		# cat=plugin.tx_easyvotecompetition/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:easyvote_competition/Resources/Private/Partials/
+		# cat=plugin.tx_easyvotecompetition/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:easyvote_competition/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_easyvotecompetition//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

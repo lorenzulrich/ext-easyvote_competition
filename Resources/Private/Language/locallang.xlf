@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-09-23T10:36:10Z" product-name="easyvote_competition">
+		<header/>
+		<body>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition">
+				<source>Competition</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.title_short">
+				<source>Title Short</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.title_long">
+				<source>Title Long</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.voting_frequency">
+				<source>Voting Frequency</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.participation_end_date">
+				<source>Participation End Date</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.participations">
+				<source>Participations</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation">
+				<source>Participation</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation.media">
+				<source>Media</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation.language">
+				<source>Language</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation.voting_enabled">
+				<source>Voting Enabled</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation.votes">
+				<source>Votes</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation.community_user">
+				<source>Community User</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_vote">
+				<source>Vote</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_vote.competition">
+				<source>Competition</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_vote.participation">
+				<source>Participation</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_vote.community_user">
+				<source>Community User</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
