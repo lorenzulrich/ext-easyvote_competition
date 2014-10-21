@@ -8,12 +8,13 @@ if (!defined('TYPO3_MODE')) {
 	'Competitiondetail',
 	array(
 		'Competition' => 'show',
+		'Participation' => 'listByCompetition, addVote'
 		
 	),
 	// non-cacheable actions
 	array(
 		'Competition' => '',
-		'Participation' => 'create, update, delete, ',
+		'Participation' => 'listByCompetition, addVote, create, update, delete, ',
 		
 	)
 );
@@ -28,7 +29,7 @@ if (!defined('TYPO3_MODE')) {
 	// non-cacheable actions
 	array(
 		'Competition' => '',
-		'Participation' => 'create, update, delete, ',
+		'Participation' => 'show, create, update, delete',
 		
 	)
 );
@@ -37,12 +38,12 @@ if (!defined('TYPO3_MODE')) {
 	'Visol.' . $_EXTKEY,
 	'Manageparticipation',
 	array(
-		'Participation' => 'show, new, create, edit, update, delete',
+		'Participation' => 'edit, updatePreview, publish, delete',
 		
 	),
 	// non-cacheable actions
 	array(
-		'Participation' => 'show, new, create, edit, update, delete',
+		'Participation' => 'edit, updatePreview, publish, delete',
 		
 	)
 );

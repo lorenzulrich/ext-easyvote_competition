@@ -1,0 +1,12 @@
+<h2>Mache andere auf diesen Beitrag aufmerksam...</h2>
+<div class="share-links">
+	<a class="share-popup" href="https://www.facebook.com/sharer/sharer.php?u={f:uri.page(absolute: 'TRUE', pageUid:settings.competitionHomePid, additionalParams:{tx_easyvotecompetition_competitiondetail:{participation:participation.uid}})}">
+		<span class="facebook"></span>
+	</a>
+	<a class="share-popup" href="https://twitter.com/home?status={participation.title} - {f:uri.page(pageUid:settings.competitionHomePid, absolute: 'TRUE', additionalParams:{tx_easyvotecompetition_competitiondetail:{participation:participation.uid}})}">
+		<span class="twitter"></span>
+	</a>
+</div>
+<div class="participation-link">
+	<input type="text" onclick="select()" id="participationLink" value="{f:uri.page(pageUid:settings.competitionHomePid, absolute: 'TRUE', additionalParams:{tx_easyvotecompetition_competitiondetail:{participation:participation.uid}})}" />
+</div>

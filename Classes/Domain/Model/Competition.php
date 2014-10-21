@@ -33,6 +33,9 @@ namespace Visol\EasyvoteCompetition\Domain\Model;
  */
 class Competition extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
+	const VOTINGFREQUENCY_ONCEPERPARTICIPATION = 1;
+	const VOTINGFREQUENCY_EVERY24HOURSPERPARTICIPATION = 2;
+
 	/**
 	 * Type
 	 *

@@ -1,0 +1,75 @@
+<div class="participation-{participation.uid} content-box content-box-static">
+	<div class="header-two-cols">
+		<div class="col-left">
+			<div class="position-badge">
+				<f:if condition="{participation.cachedRank} > 0">
+					<f:then>
+						<div class="inner">{participation.cachedRank}.</div>
+					</f:then>
+					<f:else>
+						<div class="inner">X.</div>
+					</f:else>
+				</f:if>
+			</div>
+			<f:if condition="{participation.communityUser.image}">
+				<f:then>
+					<f:image class="user-image" alt="{participation.communityUser.firstName}" src="uploads/pics/{user.image}" width="260" height="260c"/>
+				</f:then>
+				<f:else>
+					<img class="user-image" src="https://graph.facebook.com/{participation.communityUser.username}/picture?width=260&height=260" height="260" width="260" alt="{participation.communityUser.firstName}">
+				</f:else>
+			</f:if>
+			<div class="votes-count">
+				<f:if condition="{participation.cachedVotes} == 1">
+					<f:then>
+						<span class="number">{participation.cachedVotes}</span> Stimme
+					</f:then>
+					<f:else>
+						<span class="number">{participation.cachedVotes}</span> Stimmen
+					</f:else>
+				</f:if>
+			</div>
+		</div>
+		<div class="col-right">
+			<div class="actions">
+				<f:switch expression="{participation.votingEnabled}">
+					<f:case value="0">
+						<div class="action verification-indicator">
+							<i class="evicon-cancel hasTooltip"></i>
+							<div class="hidden">
+								Abstimmen ist für diesen Beitrag deaktiviert.
+							</div>
+						</div>
+					</f:case>
+					<f:case value="2">
+						<div class="action verification-indicator">
+							<i class="evicon-haken hasTooltip"></i>
+							<div class="hidden">
+								Dieser Beitrag wurde verifiziert.
+							</div>
+						</div>
+					</f:case>
+					<f:case default="TRUE"></f:case>
+				</f:switch>
+				<div class="action share">
+					<a href="#" class="hasModal shareTrigger">
+						<i class="evicon-share hasTooltip"></i>
+						<div class="hidden">
+							Teile diesen Beitrag
+						</div>
+					</a>
+					<div class="hidden">
+						<a class="pull-right qtip-close" aria-label="schliessen">
+							<i class="evicon-cancel"></i>
+						</a>
+						<f:render partial="Participation/Share" arguments="{_all}"/>
+					</div>
+				</div>
+			</div>
+			<div class="communityuser-name">{participation.communityUser.firstName} <f:format.crop maxCharacters="1" append="" respectWordBoundaries="FALSE">{participation.communityUser.lastName}</f:format.crop>. <f:if condition="{participation.communityUser.city}">aus {participation.communityUser.city}</f:if></div>
+			<h2>{participation.title}</h2>
+			<p>{participation.description}</p>
+			<f:render partial="Participation/Voting" arguments="{_all}"/>
+		</div>
+	</div>
+</div>

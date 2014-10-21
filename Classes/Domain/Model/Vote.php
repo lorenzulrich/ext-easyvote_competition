@@ -56,6 +56,13 @@ class Vote extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $communityUser = NULL;
 
 	/**
+	 * Creation date of vote
+	 *
+	 * @var \DateTime
+	 */
+	protected $crdate;
+
+	/**
 	 * Returns the competition
 	 *
 	 * @return \Visol\EasyvoteCompetition\Domain\Model\Competition $competition
@@ -110,6 +117,20 @@ class Vote extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setCommunityUser(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
 		$this->communityUser = $communityUser;
+	}
+
+	/**
+	 * @return \DateTime
+	 */
+	public function getCrdate() {
+		return $this->crdate;
+	}
+
+	/**
+	 * @param \DateTime $crdate
+	 */
+	public function setCrdate($crdate) {
+		$this->crdate = $crdate;
 	}
 
 }

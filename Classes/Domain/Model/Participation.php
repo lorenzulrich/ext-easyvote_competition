@@ -34,11 +34,17 @@ namespace Visol\EasyvoteCompetition\Domain\Model;
 class Participation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
+	 * @var \Visol\EasyvoteCompetition\Service\CompetitionService
+	 * @inject
+	 */
+	protected $competitionService;
+
+	/**
 	 * Title
 	 *
 	 * @var string
 	 */
-	protected $title = '';
+	protected $title;
 
 	/**
 	 * Description
@@ -69,19 +75,41 @@ class Participation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $language = 0;
 
 	/**
-	 * Voting is enabled
+	 * Disabled
 	 *
-	 * @var boolean
+	 * @var bool
 	 */
-	protected $votingEnabled = FALSE;
+	protected $disabled = FALSE;
+
+	/**
+	 * Voting enabled
+	 *
+	 * @var integer
+	 */
+	protected $votingEnabled = 0;
 
 	/**
 	 * Votes
 	 *
-	 * @var \Visol\EasyvoteCompetition\Domain\Model\Vote
-	 * @lazy
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteCompetition\Domain\Model\Vote>
+	 * @cascade remove
 	 */
 	protected $votes = NULL;
+
+	/**
+	 * Current number of votes (cached)
+	 *
+	 * @var integer
+	 */
+	protected $cachedVotes = 0;
+
+	/**
+	 * Current rank (cached)
+	 *
+	 * @var integer
+	 */
+	protected $cachedRank = 0;
+
 
 	/**
 	 * Community User
@@ -90,6 +118,36 @@ class Participation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @lazy
 	 */
 	protected $communityUser = NULL;
+
+	/**
+	 * Competition
+	 *
+	 * @var \Visol\EasyvoteCompetition\Domain\Model\Competition
+	 * @lazy
+	 */
+	protected $competition;
+
+	/**
+	 * @var bool
+	 * @transient
+	 */
+	protected $userCanVote = FALSE;
+
+	/**
+	 * __construct
+	 */
+	public function __construct() {
+		//Do not remove the next line: It would break the functionality
+		$this->initStorageObjects();
+	}
+
+	/**
+	 * Initializes all ObjectStorage properties
+	 * @return void
+	 */
+	protected function initStorageObjects() {
+		$this->votes = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+	}
 
 	/**
 	 * Returns the title
@@ -187,9 +245,23 @@ class Participation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
+	 * @return boolean
+	 */
+	public function getDisabled() {
+		return $this->disabled;
+	}
+
+	/**
+	 * @param boolean $disabled
+	 */
+	public function setDisabled($disabled) {
+		$this->disabled = $disabled;
+	}
+
+	/**
 	 * Returns the votingEnabled
 	 *
-	 * @return boolean $votingEnabled
+	 * @return integer $votingEnabled
 	 */
 	public function getVotingEnabled() {
 		return $this->votingEnabled;
@@ -198,7 +270,7 @@ class Participation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the votingEnabled
 	 *
-	 * @param boolean $votingEnabled
+	 * @param integer $votingEnabled
 	 * @return void
 	 */
 	public function setVotingEnabled($votingEnabled) {
@@ -206,18 +278,29 @@ class Participation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * Returns the boolean state of votingEnabled
+	 * Adds a Vote
 	 *
-	 * @return boolean
+	 * @param \Visol\EasyvoteCompetition\Domain\Model\Vote $vote
+	 * @return void
 	 */
-	public function isVotingEnabled() {
-		return $this->votingEnabled;
+	public function addVote(\Visol\EasyvoteCompetition\Domain\Model\Vote $vote) {
+		$this->votes->attach($vote);
+	}
+
+	/**
+	 * Removes a Vote
+	 *
+	 * @param \Visol\EasyvoteCompetition\Domain\Model\Vote $voteToRemove The Vote to be removed
+	 * @return void
+	 */
+	public function removeVote(\Visol\EasyvoteCompetition\Domain\Model\Vote $voteToRemove) {
+		$this->votes->detach($voteToRemove);
 	}
 
 	/**
 	 * Returns the votes
 	 *
-	 * @return \Visol\EasyvoteCompetition\Domain\Model\Vote $votes
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteCompetition\Domain\Model\Vote> $votes
 	 */
 	public function getVotes() {
 		return $this->votes;
@@ -226,10 +309,10 @@ class Participation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the votes
 	 *
-	 * @param \Visol\EasyvoteCompetition\Domain\Model\Vote $votes
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteCompetition\Domain\Model\Vote> $votes
 	 * @return void
 	 */
-	public function setVotes(\Visol\EasyvoteCompetition\Domain\Model\Vote $votes) {
+	public function setVotes(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $votes) {
 		$this->votes = $votes;
 	}
 
@@ -250,6 +333,55 @@ class Participation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setCommunityUser(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
 		$this->communityUser = $communityUser;
+	}
+
+	/**
+	 * @return \Visol\EasyvoteCompetition\Domain\Model\Competition
+	 */
+	public function getCompetition() {
+		return $this->competition;
+	}
+
+	/**
+	 * @param \Visol\EasyvoteCompetition\Domain\Model\Competition $competition
+	 */
+	public function setCompetition($competition) {
+		$this->competition = $competition;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getUserCanVote() {
+		return $this->competitionService->userCanVoteForParticiation($this->uid);
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getCachedVotes() {
+		return $this->cachedVotes;
+	}
+
+	/**
+	 * @param int $cachedVotes
+	 */
+	public function setCachedVotes($cachedVotes) {
+		$this->cachedVotes = $cachedVotes;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getCachedRank() {
+		return $this->cachedRank;
+	}
+
+	/**
+	 * @param int $cachedRank
+	 */
+	public function setCachedRank($cachedRank) {
+		$this->cachedRank = $cachedRank;
 	}
 
 }

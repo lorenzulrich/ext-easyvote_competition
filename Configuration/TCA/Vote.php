@@ -98,6 +98,17 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_vote'] = array(
 				'maxitems' => 1,
 			),
 		),
-
+		'crdate' => array(
+			'exclude' => 1,
+			'l10n_mode' => 'mergeIfNotBlank',
+			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_vote.crdate',
+			'config' => array(
+				'type' => 'input',
+				'size' => 13,
+				'max' => 20,
+				'eval' => 'date',
+				'readOnly' => 1
+			),
+		),
 	),
 );

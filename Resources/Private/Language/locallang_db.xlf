@@ -78,8 +78,26 @@
 			<trans-unit id="tx_easyvotecompetition_domain_model_participation.voting_enabled">
 				<source>Voting Enabled</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation.voting_enabled.0">
+				<source>No</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation.voting_enabled.1">
+				<source>Yes</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation.voting_enabled.2">
+				<source>Yes, verified</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation.disabled">
+				<source>Disabled</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvotecompetition_domain_model_participation.votes">
 				<source>Votes</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation.cached_votes">
+				<source>Number of votes (cached)</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation.cached_rank">
+				<source>Current rank (cached)</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvotecompetition_domain_model_participation.community_user">
 				<source>Community User</source>
@@ -95,6 +113,9 @@
 			</trans-unit>
 			<trans-unit id="tx_easyvotecompetition_domain_model_vote.community_user">
 				<source>Community User</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_vote.crdate">
+				<source>Creation date</source>
 			</trans-unit>
 		</body>
 	</file>

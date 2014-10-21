@@ -1,26 +1,63 @@
-
 <f:layout name="Default" />
 
-This template displays a EDIT form for the current domain object.
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        Edit.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-
 <f:section name="main">
-<h1>Edit Participation</h1>
 
-<f:flashMessages renderMode="div" />
+<f:if condition="{participation}">
+	<f:then>
+		<div class="content-box">
+			<h2>Teilnahme</h2>
 
-<f:render partial="FormErrors" arguments="{object:Participation}" />
 
-<f:form action="update" name="participation" object="{participation}" >
-<f:render partial="Participation/FormFields" arguments="{participation:participation}" />
-	<f:form.submit value="Save" />
-</f:form>
+			<f:if condition="{mayBeEdited}">
+				<f:then>
+					<f:flashMessages renderMode="div" />
+					<f:render partial="FormErrors" arguments="{object:Participation}" />
+					<f:form action="updatePreview" name="participation" object="{participation}" >
+						<f:switch expression="{participation.competition.type}">
+							<f:case value="1">
+								<f:comment>Text</f:comment>
+								<f:render partial="Participation/TextItemForm" arguments="{participation:participation}" />
+							</f:case>
+							<f:case value="2">
+								<f:comment>Image</f:comment>
+								@todo
+							</f:case>
+							<f:case value="3">
+								<f:comment>Multimedia</f:comment>
+								@todo
+							</f:case>
+						</f:switch>
+						<p>
+							<button type="submit" class="btn btn-primary">Vorschau</button>
+						</p>
+					</f:form>
+					<f:if condition="{isNewParticipation} == 'FALSE'">
+						<f:render partial="Participation/DeleteButton" arguments="{participation:participation}" />
+					</f:if>
+				</f:then>
+				<f:else>
+					<p>
+						Da du bereits Stimmen erhalten hast oder dein Beitrag durch easyvote verifiziert wurde,
+						kannst du nur noch die Beschreibung deines Beitrages ändern.
+					</p>
+					<f:form action="updatePreview" name="participation" object="{participation}" >
+						<div class="form-group">
+							<label for="description">Beschreibung</label>
+							<f:form.textarea additionalAttributes="{maxlength:140}" class="form-control" property="description" rows="5" />
+						</div>
+						<p>
+							<button type="submit" class="btn btn-primary">Vorschau</button>
+						</p>
+					</f:form>
+					<f:render partial="Participation/DeleteButton" arguments="{participation:participation}" />
+				</f:else>
+			</f:if>
+		</div>
+	</f:then>
+	<f:else>
+		Kein Zugriff
+	</f:else>
+
+</f:if>
+
 </f:section>

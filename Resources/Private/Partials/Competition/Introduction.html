@@ -1,0 +1,26 @@
+<div class="competition-introduction" style="background-image: url({competition.image.originalResource.publicUrl})">
+	<div class="box-content">
+		<div class="badge">
+			{competition.titleShort}
+		</div>
+
+		<h2>{competition.titleLong}</h2>
+		<f:format.html>{competition.description}</f:format.html>
+		<p>
+			<f:security.ifAuthenticated>
+				<f:then>
+					<f:security.ifHasRole role="{settings.communityUserGroupUid}">
+						<f:link.action pageUid="{settings.manageParticipationPid}" controller="Participation" action="edit" arguments="{competition:competition}" class="link-box" noCacheHash="TRUE">
+							Teilnehmen
+						</f:link.action>
+					</f:security.ifHasRole>
+				</f:then>
+				<f:else>
+					<a class="addParticipation-notAuthenticated link-box" href="#">
+						Teilnehmen
+					</a>
+				</f:else>
+			</f:security.ifAuthenticated>
+		</p>
+	</div>
+</div>

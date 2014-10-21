@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_participation'] = array(
 	'ctrl' => $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_participation']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, image, media, language, voting_enabled, votes, community_user',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, image, media, language, disabled, voting_enabled, votes, community_user',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, description, image, media, language, voting_enabled, votes, community_user, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, description, image, media, language, disabled, voting_enabled, votes, cached_votes, cached_rank, community_user, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -87,7 +87,6 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_participation'] = array(
 				),
 			),
 		),
-
 		'title' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_participation.title',
@@ -139,12 +138,23 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_participation'] = array(
 				'eval' => ''
 			)
 		),
+		'disabled' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_participation.disabled',
+			'config' => array(
+				'type' => 'check',
+			),
+		),
 		'voting_enabled' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_participation.voting_enabled',
 			'config' => array(
-				'type' => 'check',
-				'default' => 1
+				'type' => 'select',
+				'items' => array(
+					array('LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_participation.voting_enabled.1', 1),
+					array('LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_participation.voting_enabled.0', 0),
+					array('LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_participation.voting_enabled.2', 2),
+				),
 			)
 		),
 		'votes' => array(
@@ -153,8 +163,9 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_participation'] = array(
 			'config' => array(
 				'type' => 'inline',
 				'foreign_table' => 'tx_easyvotecompetition_domain_model_vote',
+				'foreign_field' => 'participation',
 				'minitems' => 0,
-				'maxitems' => 1,
+				'maxitems' => 999999,
 				'appearance' => array(
 					'collapseAll' => 0,
 					'levelLinksPosition' => 'top',
@@ -178,7 +189,24 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_participation'] = array(
 				'maxitems' => 1,
 			),
 		),
-		
+		'cached_votes' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_participation.cached_votes',
+			'config' => array(
+				'type' => 'input',
+				'eval' => 'required,trim',
+				'readOnly' => TRUE
+			)
+		),
+		'cached_rank' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_participation.cached_rank',
+			'config' => array(
+				'type' => 'input',
+				'eval' => 'required,trim',
+				'readOnly' => TRUE
+			)
+		),
 		'competition' => array(
 			'config' => array(
 				'type' => 'passthrough',

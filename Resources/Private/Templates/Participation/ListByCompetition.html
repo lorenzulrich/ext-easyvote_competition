@@ -1,0 +1,19 @@
+<f:widget.paginate objects="{participations}" as="paginatedParticipations" configuration="{itemsPerPage: 5, insertAbove: 0, insertBelow: 1}">
+	<f:for each="{paginatedParticipations}" as="participation">
+		<f:switch expression="{participation.competition.type}">
+			<f:case value="1">
+				<f:comment>Text</f:comment>
+				<f:render partial="Participation/TextItemOutput" arguments="{participation:participation, communityUser:communityUser}" />
+			</f:case>
+			<f:case value="2">
+				<f:comment>Image</f:comment>
+				@todo
+			</f:case>
+			<f:case value="3">
+				<f:comment>Multimedia</f:comment>
+				@todo
+			</f:case>
+		</f:switch>
+	</f:for>
+</f:widget.paginate>
+

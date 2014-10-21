@@ -1,0 +1,39 @@
+{namespace h=Helhum\TyposcriptRendering\ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+	<div class="content-box content-box-static">
+		<h2>Vorschau</h2>
+		<p>
+			Danke für deinen Beitrag. Bitte kontrolliere die Vorschau. Falls alles in Ordnung
+			ist, kannst du ihn freigeben, ansonsten nochmals bearbeiten. Mit der Freigabe
+			akzeptiertst du unsere <a href="#">Teilnahmebedingungen</a>.
+		</p>
+		<p>
+			<f:link.action controller="Participation" action="edit" arguments="{competition:participation.competition}" class="link-box" noCacheHash="TRUE">
+				Bearbeiten
+			</f:link.action>
+			<f:link.action controller="Participation" action="publish" arguments="{participation:participation}" class="link-box" noCacheHash="TRUE">
+				Freigeben
+			</f:link.action>
+		</p>
+	</div>
+
+	<div class="competition-detail">
+		<f:switch expression="{participation.competition.type}">
+			<f:case value="1">
+				<f:comment>Text</f:comment>
+				<f:render partial="Participation/TextItemOutput" arguments="{participation:participation, communityUser:communityUser}" />
+			</f:case>
+			<f:case value="2">
+				<f:comment>Image</f:comment>
+				@todo
+			</f:case>
+			<f:case value="3">
+				<f:comment>Multimedia</f:comment>
+				@todo
+			</f:case>
+		</f:switch>
+	</div>
+</f:section>

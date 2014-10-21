@@ -52,7 +52,10 @@ CREATE TABLE tx_easyvotecompetition_domain_model_participation (
 	language int(11) DEFAULT '0' NOT NULL,
 	voting_enabled tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	votes int(11) unsigned DEFAULT '0',
+	cached_votes int(11) unsigned NOT NULL DEFAULT '0',
+	cached_rank int(11) unsigned NOT NULL DEFAULT '0',
 	community_user int(11) unsigned DEFAULT '0',
+	disabled tinyint(4) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

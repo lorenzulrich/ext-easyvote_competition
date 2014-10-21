@@ -31,15 +31,7 @@ namespace Visol\EasyvoteCompetition\Controller;
 /**
  * CompetitionController
  */
-class CompetitionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
-
-	/**
-	 * competitionRepository
-	 *
-	 * @var \Visol\EasyvoteCompetition\Domain\Repository\CompetitionRepository
-	 * @inject
-	 */
-	protected $competitionRepository = NULL;
+class CompetitionController extends AbstractController {
 
 	/**
 	 * action list
@@ -54,11 +46,18 @@ class CompetitionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 	/**
 	 * action show
 	 *
-	 * @param \Visol\EasyvoteCompetition\Domain\Model\Competition $competition
+	 * @param \Visol\EasyvoteCompetition\Domain\Model\Participation $participation
+	 * @param int $openSharer
 	 * @return void
 	 */
-	public function showAction(\Visol\EasyvoteCompetition\Domain\Model\Competition $competition) {
+	public function showAction(\Visol\EasyvoteCompetition\Domain\Model\Participation $participation = NULL, $openSharer = 0) {
+		$competition = $this->competitionRepository->findByUid((int)$this->settings['competition']);
+		$communityUser = $this->competitionService->getCurrentCommunityUser();
+
+		$this->view->assign('communityUser', $communityUser);
 		$this->view->assign('competition', $competition);
+		$this->view->assign('participation', $participation);
+		$this->view->assign('openSharer', (bool)$openSharer);
 	}
 
 	/**

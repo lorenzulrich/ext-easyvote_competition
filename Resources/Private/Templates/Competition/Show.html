@@ -1,22 +1,45 @@
+{namespace h=Helhum\TyposcriptRendering\ViewHelpers}
 
 <f:layout name="Default" />
 
-This Template is responsible for displaying a single view for a domain object
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        Show.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-
 <f:section name="main">
-<h1>Single View for Competition</h1>
-
-<f:flashMessages renderMode="div" />
-<f:render partial="Competition/Properties" arguments="{competition:competition}" />
-<f:link.action action="list">Back to list</f:link.action><br />
-<f:link.action action="new">New Competition</f:link.action>
+	<div class="competition-detail">
+		<f:render partial="Competition/Introduction" arguments="{competition:competition, settings:settings}" />
+		<f:if condition="{participation.uid} > 0">
+			<f:comment>
+				A single participation is selected, so display it as first item
+			</f:comment>
+			<div id="showSingleParticipationContainer">
+				<f:switch expression="{participation.competition.type}">
+					<f:case value="1">
+						<f:comment>Text</f:comment>
+						<f:render partial="Participation/TextItemOutput" arguments="{participation:participation, communityUser:communityUser}" />
+					</f:case>
+					<f:case value="2">
+						<f:comment>Image</f:comment>
+						@todo
+					</f:case>
+					<f:case value="3">
+						<f:comment>Multimedia</f:comment>
+						@todo
+					</f:case>
+				</f:switch>
+			</div>
+		</f:if>
+		<div id="listParticipationsContainer"></div>
+	</div>
+	<f:if condition="{participation.uid} > 0">
+		<f:comment>
+			A single participation is selected, so populate the OpenGraph Tags
+		</f:comment>
+		<f:render partial="Participation/HeadTags" arguments="{participation:participation}" />
+		<script>
+			var singleParticipationUid = '{participation.uid}';
+			var openSharer = '{openSharer}';
+		</script>
+	</f:if>
+	<script>
+		var getParticipationsUri = '<h:uri.ajaxAction controller="Participation" action="listByCompetition" arguments="{competition:competition}" />';
+		var voteForParticipationUri = '<h:uri.ajaxAction controller="Participation" action="addVote" />';
+	</script>
 </f:section>

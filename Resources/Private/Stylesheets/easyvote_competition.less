@@ -1,0 +1,156 @@
+.competition-detail {
+	.competition-introduction {
+		position: relative;
+		.clearfix();
+		width: 100%;
+		padding-bottom: 100%;
+		.rounded-corners();
+		background-size: cover;
+		margin-bottom: 15px;
+
+		.box-content {
+			position: absolute;
+			width: 100%;
+			bottom: 0px;
+			left: 0;
+			z-index: 999;
+			background: rgba(255, 255, 255, 0.8);
+			padding: @box-padding;
+
+			.image-caption {
+				display: inline-block;
+				font-size: 10px;
+				color: black;
+				margin-bottom: 10px;
+				.creator {
+					display: inline-block;
+					margin-left: 5px;
+					font-style: italic;
+				}
+			}
+
+			h2 {
+				margin-bottom: 15px;
+			}
+
+			p {
+				line-height: 130%;
+				.font-ubuntu();
+				font-weight: 500;
+				&:last-child {
+					margin-bottom: 0;
+				}
+
+			}
+			.badge {
+				z-index: 1000;
+				position: absolute;
+				top: -75px;
+				left: 20px;
+				padding: 10px;
+				.rounded-corners();
+				.font-ubuntu();
+				font-size: 22px;
+				background-color: @pink;
+				color: @white;
+			}
+		}
+	}
+
+	.content-box {
+		&.participation-single-selected {
+			-webkit-box-shadow: 0 0 10px 1px @pink;
+			box-shadow: 0 0 10px 1px @pink;
+		}
+
+		.votes-count {
+			margin-top: 10px;
+			.number {
+				.font-ubuntu();
+				font-size: 18px;
+			}
+		}
+
+		.position-badge {
+			position: absolute;
+			top: -15px;
+			left: -15px;
+			background: @pink;
+			width: 40px;
+			height: 40px;
+			-webkit-border-radius: 100%;
+			border-radius: 100%;
+			.inner {
+				display: table-cell;
+				width: 40px;
+				height: 40px;
+				.font-ubuntu();
+				font-size: 16px;
+				vertical-align: middle;
+				text-align: center;
+				color: @white;
+			}
+		}
+
+		.actions {
+
+			.verification-indicator {
+				display: inline-block;
+				background: @white;
+				width: 30px;
+				height: 30px;
+				-webkit-border-radius: 100%;
+				border-radius: 100%;
+				i {
+					display: table-cell;
+					width: 30px;
+					height: 30px;
+					font-size: 14px;
+					vertical-align: middle;
+					text-align: center;
+					&.evicon-haken {
+						color: @blue;
+					}
+					&.evicon-cancel {
+						color: @pink;
+					}
+				}
+			}
+		}
+		.communityuser-name {
+			display: inline-block;
+			margin-bottom: 5px;
+		}
+
+		.voting {
+			height: 30px;
+			cursor: pointer;
+			i {
+				font-size: 30px;
+				color: @light-blue;
+
+				&.voting-disabled {
+					color: @grey;
+				}
+			}
+			a {
+				display: inline-block;
+				height: 30px;
+				line-height: 30px;
+				color: @text-blue;
+				text-decoration: none;
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+
+}
+
+.participation-link {
+	margin-top: 15px;
+	input {
+		width: 100%;
+	}
+}

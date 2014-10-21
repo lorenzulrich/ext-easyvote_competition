@@ -1,22 +1,26 @@
+{namespace h=Helhum\TyposcriptRendering\ViewHelpers}
 
 <f:layout name="Default" />
 
-This Template is responsible for displaying a single view for a domain object
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        Show.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-
 <f:section name="main">
-<h1>Single View for Participation</h1>
-
-<f:flashMessages renderMode="div" />
-<f:render partial="Participation/Properties" arguments="{participation:participation}" />
-<f:link.action action="list">Back to list</f:link.action><br />
-<f:link.action action="new">New Participation</f:link.action>
+	<div class="competition-detail">
+		<f:switch expression="{participation.competition.type}">
+			<f:case value="1">
+				<f:comment>Text</f:comment>
+				<f:render partial="Participation/TextItemOutput" arguments="{participation:participation, communityUser:communityUser}" />
+			</f:case>
+			<f:case value="2">
+				<f:comment>Image</f:comment>
+				@todo
+			</f:case>
+			<f:case value="3">
+				<f:comment>Multimedia</f:comment>
+				@todo
+			</f:case>
+		</f:switch>
+	</div>
+	<script>
+		var getParticipationsUri = '<h:uri.ajaxAction controller="Participation" action="listByCompetition" arguments="{competition:participation.competition}" />';
+		var voteForParticipationUri = '<h:uri.ajaxAction controller="Participation" action="addVote" />';
+	</script>
 </f:section>

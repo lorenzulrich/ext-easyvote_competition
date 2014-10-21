@@ -29,23 +29,9 @@ namespace Visol\EasyvoteCompetition\Domain\Repository;
  ***************************************************************/
 
 /**
- * The repository for Votes
+ * The repository for Competitions
  */
-class VoteRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class CompetitionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
-	public function findByParticipationAndCommunityUser(\Visol\EasyvoteCompetition\Domain\Model\Participation $participation, \Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
-		$query = $this->createQuery();
-		$query->matching(
-			$query->logicalAnd(
-				$query->equals('participation', $participation),
-				$query->equals('communityUser', $communityUser)
-			)
-		);
-		// latest vote first
-		$query->setOrderings(array(
-			'crdate' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING,
-		));
-		return $query->execute();
-	}
-
+	
 }
