@@ -2,7 +2,9 @@
 	<f:case value="1">
 		<f:comment>Text @TODO absolute baseURL!!!</f:comment>
 		<f:if condition="{participation.competition.image}">
-			<f:then>https://dev.easyvote.ch/<f:uri.image src="{participation.competition.image.originalResource.publicUrl}" width="500" height="500c" /></f:then>
+			<f:then>
+				https://www.easyvote.ch/<f:uri.image src="{participation.competition.image.originalResource.publicUrl}" width="500" height="500c" />
+			</f:then>
 			<f:else>
 				https://graph.facebook.com/{participation.communityUser.username}/picture?width=500&height=500
 			</f:else>

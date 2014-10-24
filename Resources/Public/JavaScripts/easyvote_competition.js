@@ -51,14 +51,12 @@ $(function() {
 
 	$body.on('click', '.voteForParticipation-notAuthenticated', function(e) {
 		e.preventDefault();
-		var message = $('#notAuthenticatedNotificationModal').html();
-		displayModal(message);
+		$('.login-link').trigger('click');
 	});
 
 	$body.on('click', '.addParticipation-notAuthenticated', function(e) {
 		e.preventDefault();
-		var message = $('#notAuthenticatedNotificationModal').html();
-		displayModal(message);
+		$('.login-link').trigger('click');
 	});
 
 	$body.on('click', '.voteForParticipation-alreadyVoted', function(e) {
