@@ -11,14 +11,7 @@
 					</f:else>
 				</f:if>
 			</div>
-			<f:if condition="{participation.communityUser.image}">
-				<f:then>
-					<f:image class="user-image" alt="{participation.communityUser.firstName}" src="uploads/pics/{user.image}" width="260" height="260c"/>
-				</f:then>
-				<f:else>
-					<img class="user-image" src="https://graph.facebook.com/{participation.communityUser.username}/picture?width=260&height=260" height="260" width="260" alt="{participation.communityUser.firstName}">
-				</f:else>
-			</f:if>
+			<f:render partial="Participation/UserImage" arguments="{user:participation.communityUser, settings:settings, size:'500'}" />
 			<div class="votes-count">
 				<f:if condition="{participation.cachedVotes} == 1">
 					<f:then>
