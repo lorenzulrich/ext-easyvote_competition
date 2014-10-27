@@ -7,7 +7,7 @@ $(function() {
 		threshold: 140
 	});
 
-	var $listParticipationsContainer = $('#listParticipationsContainer');
+	var $listParticipationsContainer = $('.listParticipationsContainer');
 	if ($listParticipationsContainer.length && typeof(getParticipationsUri) === 'string') {
 		EasyvoteCompetition.loadParticipations(getParticipationsUri).done(function(data) {
 			$listParticipationsContainer.html(data);
@@ -20,12 +20,7 @@ $(function() {
 					}
 				}
 			}
-			$('#listParticipationsContainer').jscroll({
-				autoTrigger: false,
-				nextSelector: '.records-navigation a',
-				contentSelector: '',
-				loadingHtml: '<div class="records-loading">laden...</div>'
-			});
+			EasyvoteCompetition.bindInfiniteScrolling();
 			Easyvote.bindToolTips();
 		});
 	}
@@ -42,8 +37,9 @@ $(function() {
 				success: function() {
 					EasyvoteCompetition.loadParticipations(getParticipationsUri).done(function(data) {
 						$listParticipationsContainer.html(data);
+						EasyvoteCompetition.bindInfiniteScrolling();
+						Easyvote.bindToolTips();
 					});
-					Easyvote.bindToolTips();
 				}
 			})
 		}
@@ -76,5 +72,17 @@ var EasyvoteCompetition = {
 		return $.ajax({
 			url: uri
 		});
+	},
+	/* Infinite scrolling for participations */
+	bindInfiniteScrolling: function() {
+		console.log('hier');
+		$('.listParticipationsContainer').jscroll({
+			autoTrigger: false,
+			nextSelector: '.records-navigation a',
+			contentSelector: '',
+			loadingHtml: '<div class="records-loading">laden...</div>',
+			refresh: true
+		});
+
 	}
 }
