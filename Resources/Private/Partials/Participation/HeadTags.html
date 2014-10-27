@@ -4,5 +4,5 @@
 <v:page.header.meta additionalAttributes="{property: 'og:url'}" content="{f:uri.action(controller:'Competition', action:'show', arguments:'{participation:participation}', absolute: 'TRUE', noCacheHash: 'TRUE')}" />
 <v:page.header.meta additionalAttributes="{property: 'og:image'}" content="{f:render(partial:'Participation/Image', arguments:'{participation:participation}')}" />
 <v:page.header.meta additionalAttributes="{property: 'og:site_name'}" content="easyvote" />
-<v:page.header.meta additionalAttributes="{property: 'og:description'}" content="{participation.description}" />
+<v:page.header.meta additionalAttributes="{property: 'og:description'}" content="{participation.socialSharingText}" />
 <v:page.header.title title="{participation.title} - easyvote" whitespaceString=" " setIndexedDocTitle="1" />

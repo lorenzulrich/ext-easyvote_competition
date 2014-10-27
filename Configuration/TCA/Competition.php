@@ -9,7 +9,7 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_competition'] = array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title_short, title_long, description, image, voting_frequency, participation_end_date, participations',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, type, title_short, title_long, description;;;richtext:rte_transform[mode=ts_links], image, voting_frequency, participation_end_date, participations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, type, title_short, title_long, description;;;richtext:rte_transform[mode=ts_links], image, social_sharing_text, participation_button_text, participation_explanation;;;richtext:rte_transform[mode=ts_links], participation_terms;;;richtext:rte_transform[mode=ts_links], voting_frequency, participation_end_date, participations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -112,6 +112,16 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_competition'] = array(
 				'eval' => 'trim,required'
 			),
 		),
+		'social_sharing_text' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_competition.social_sharing_text',
+			'config' => array(
+				'type' => 'text',
+				'cols' => 40,
+				'rows' => 15,
+				'eval' => 'trim'
+			)
+		),
 		'title_long' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_competition.title_long',
@@ -124,6 +134,56 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_competition'] = array(
 		'description' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_competition.description',
+			'config' => array(
+				'type' => 'text',
+				'cols' => 40,
+				'rows' => 15,
+				'eval' => 'trim',
+				'wizards' => array(
+					'RTE' => array(
+						'icon' => 'wizard_rte2.gif',
+						'notNewRecords'=> 1,
+						'RTEonly' => 1,
+						'script' => 'wizard_rte.php',
+						'title' => 'LLL:EXT:cms/locallang_ttc.xlf:bodytext.W.RTE',
+						'type' => 'script'
+					)
+				)
+			),
+		),
+		'participation_button_text' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_competition.participation_button_text',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'max' => 100,
+				'eval' => 'trim,required'
+			),
+		),
+		'participation_explanation' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_competition.participation_explanation',
+			'config' => array(
+				'type' => 'text',
+				'cols' => 40,
+				'rows' => 15,
+				'eval' => 'trim',
+				'wizards' => array(
+					'RTE' => array(
+						'icon' => 'wizard_rte2.gif',
+						'notNewRecords'=> 1,
+						'RTEonly' => 1,
+						'script' => 'wizard_rte.php',
+						'title' => 'LLL:EXT:cms/locallang_ttc.xlf:bodytext.W.RTE',
+						'type' => 'script'
+					)
+				)
+			),
+		),
+		'participation_terms' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_competition.participation_terms',
 			'config' => array(
 				'type' => 'text',
 				'cols' => 40,

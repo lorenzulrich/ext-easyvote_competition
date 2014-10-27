@@ -72,6 +72,26 @@ class Competition extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $image = NULL;
 
 	/**
+	 * @var string
+	 */
+	protected $socialSharingText;
+
+	/**
+	 * @var string
+	 */
+	protected $participationButtonText;
+
+	/**
+	 * @var string
+	 */
+	protected $participationExplanation;
+
+	/**
+	 * @var string
+	 */
+	protected $participationTerms;
+
+	/**
 	 * Voting Frequency
 	 *
 	 * @var integer
@@ -283,6 +303,62 @@ class Competition extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setParticipations(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $participations) {
 		$this->participations = $participations;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getSocialSharingText() {
+		return $this->socialSharingText;
+	}
+
+	/**
+	 * @param string $socialSharingText
+	 */
+	public function setSocialSharingText($socialSharingText) {
+		$this->socialSharingText = $socialSharingText;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getParticipationButtonText() {
+		return $this->participationButtonText;
+	}
+
+	/**
+	 * @param mixed $participationButtonText
+	 */
+	public function setParticipationButtonText($participationButtonText) {
+		$this->participationButtonText = $participationButtonText;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getParticipationTerms() {
+		return $this->participationTerms;
+	}
+
+	/**
+	 * @param string $participationTerms
+	 */
+	public function setParticipationTerms($participationTerms) {
+		$this->participationTerms = $participationTerms;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getParticipationExplanation() {
+		return $this->participationExplanation;
+	}
+
+	/**
+	 * @param string $participationExplanation
+	 */
+	public function setParticipationExplanation($participationExplanation) {
+		$this->participationExplanation = $participationExplanation;
 	}
 
 }

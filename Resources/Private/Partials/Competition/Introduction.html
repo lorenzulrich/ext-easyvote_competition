@@ -11,13 +11,13 @@
 				<f:then>
 					<f:security.ifHasRole role="{settings.communityUserGroupUid}">
 						<f:link.action pageUid="{settings.manageParticipationPid}" controller="Participation" action="edit" arguments="{competition:competition}" class="link-box" noCacheHash="TRUE">
-							Mach jetzt mit!
+							{competition.participationButtonText}
 						</f:link.action>
 					</f:security.ifHasRole>
 				</f:then>
 				<f:else>
 					<a class="addParticipation-notAuthenticated link-box" href="#">
-						Mach jetzt mit!
+						{competition.participationButtonText}
 					</a>
 				</f:else>
 			</f:security.ifAuthenticated>

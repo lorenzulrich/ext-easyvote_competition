@@ -134,6 +134,12 @@ class Participation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $userCanVote = FALSE;
 
 	/**
+	 * @var string
+	 * @transient
+	 */
+	protected $socialSharingText;
+
+	/**
 	 * __construct
 	 */
 	public function __construct() {
@@ -382,6 +388,17 @@ class Participation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setCachedRank($cachedRank) {
 		$this->cachedRank = $cachedRank;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getSocialSharingText() {
+		/** @var \TYPO3\CMS\Fluid\View\StandaloneView $standaloneView */
+		$standaloneView = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Fluid\View\StandaloneView');
+		$standaloneView->setTemplateSource($this->getCompetition()->getSocialSharingText());
+		$standaloneView->assign('communityUser', $this->communityUser);
+		return $standaloneView->render();
 	}
 
 }

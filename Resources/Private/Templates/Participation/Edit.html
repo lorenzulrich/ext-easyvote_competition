@@ -12,6 +12,7 @@
 				<f:then>
 					<f:flashMessages renderMode="div" />
 					<f:render partial="FormErrors" arguments="{object:Participation}" />
+					<f:format.html>{participation.competition.participationExplanation}</f:format.html>
 					<f:form action="updatePreview" name="participation" object="{participation}" >
 						<f:switch expression="{participation.competition.type}">
 							<f:case value="1">

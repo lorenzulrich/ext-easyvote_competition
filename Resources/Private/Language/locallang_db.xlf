@@ -33,6 +33,18 @@
 			<trans-unit id="tx_easyvotecompetition_domain_model_competition.image">
 				<source>Image</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.social_sharing_text">
+				<source>Social Sharing Text (max. 300 Zeichen)</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.participation_button_text">
+				<source>Text für Teilnehmen-Button</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.participation_explanation">
+				<source>Erklärung für Teilnehmende (Neue Teilnahme)</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.participation_terms">
+				<source>Bedingungen für Teilnehmende (vor Freigabe)</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvotecompetition_domain_model_competition.voting_frequency">
 				<source>Voting Frequency</source>
 			</trans-unit>

@@ -5,9 +5,7 @@
 <f:section name="main">
 	<div class="content-box content-box-static">
 		<h2>Vorschau</h2>
-		<p>
-			Durch den Klick auf "Einsenden" akzeptierst du unsere Teilnahmebedingungen und unsere Netiquette sowie unsere UGC-Bedingungen.
-		</p>
+		<f:format.html>{participation.competition.participationTerms}</f:format.html>
 		<p>
 			<f:link.action controller="Participation" action="edit" arguments="{competition:participation.competition}" class="link-box" noCacheHash="TRUE">
 				Bearbeiten
