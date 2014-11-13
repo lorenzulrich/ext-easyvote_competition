@@ -7,20 +7,27 @@
 		<h2>{competition.titleLong}</h2>
 		<f:format.html>{competition.description}</f:format.html>
 		<p>
-			<f:security.ifAuthenticated>
+			<f:if condition="{competition.votingPeriodIsActive}">
 				<f:then>
-					<f:security.ifHasRole role="{settings.communityUserGroupUid}">
-						<f:link.action pageUid="{settings.manageParticipationPid}" controller="Participation" action="edit" arguments="{competition:competition}" class="link-box" noCacheHash="TRUE">
-							{competition.participationButtonText}
-						</f:link.action>
-					</f:security.ifHasRole>
+					<f:security.ifAuthenticated>
+						<f:then>
+							<f:security.ifHasRole role="{settings.communityUserGroupUid}">
+								<f:link.action pageUid="{settings.manageParticipationPid}" controller="Participation" action="edit" arguments="{competition:competition}" class="link-box" noCacheHash="TRUE">
+									{competition.participationButtonText}
+								</f:link.action>
+							</f:security.ifHasRole>
+						</f:then>
+						<f:else>
+							<a class="addParticipation-notAuthenticated link-box" href="#">
+								{competition.participationButtonText}
+							</a>
+						</f:else>
+					</f:security.ifAuthenticated>
 				</f:then>
 				<f:else>
-					<a class="addParticipation-notAuthenticated link-box" href="#">
-						{competition.participationButtonText}
-					</a>
+					Diese Abstimmung ist am <f:format.date format="d.m.Y">{competition.participationEndDate}</f:format.date> zu Ende gegangen.
 				</f:else>
-			</f:security.ifAuthenticated>
+			</f:if>
 		</p>
 	</div>
 </div>

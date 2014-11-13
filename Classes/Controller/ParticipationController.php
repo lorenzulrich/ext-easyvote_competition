@@ -58,6 +58,7 @@ class ParticipationController extends AbstractController {
 	 * @return bool
 	 */
 	public function addVoteAction(\Visol\EasyvoteCompetition\Domain\Model\Participation $participation) {
+		// todo check if participationEndDate is reached
 		$communityUser = $this->competitionService->getCurrentCommunityUser();
 		if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
 			if ($this->competitionService->userCanVoteForParticiation($participation->getUid())) {
@@ -100,6 +101,7 @@ class ParticipationController extends AbstractController {
 	 * @return void
 	 */
 	public function editAction(\Visol\EasyvoteCompetition\Domain\Model\Competition $competition = NULL, \Visol\EasyvoteCompetition\Domain\Model\Participation $participation = NULL) {
+		// TODO check participationEndDate
 		// @TODO check for passed optional participation and if it is allowed to edit it --> possible admin functionality
 		if ($communityUser = $this->getLoggedInUser()) {
 			$mayBeEdited = TRUE;
@@ -143,6 +145,7 @@ class ParticipationController extends AbstractController {
 	 * @return void
 	 */
 	public function updatePreviewAction(\Visol\EasyvoteCompetition\Domain\Model\Participation $participation) {
+		// TODO check participationEndDate
 		if ($communityUser = $this->getLoggedInUser()) {
 			if ($communityUser === $participation->getCommunityUser()) {
 				$this->participationRepository->update($participation);
@@ -163,6 +166,7 @@ class ParticipationController extends AbstractController {
 	 * @return void
 	 */
 	public function updateAction(\Visol\EasyvoteCompetition\Domain\Model\Participation $participation) {
+		// todo check participationEndDate
 		$this->participationRepository->update($participation);
 		$this->redirect('list');
 	}
@@ -174,6 +178,7 @@ class ParticipationController extends AbstractController {
 	 * @return void
 	 */
 	public function publishAction(\Visol\EasyvoteCompetition\Domain\Model\Participation $participation) {
+		// todo check participationEndDate
 		if ($communityUser = $this->getLoggedInUser()) {
 			if ($communityUser === $participation->getCommunityUser()) {
 				$participation->setVotingEnabled(TRUE);
@@ -197,6 +202,7 @@ class ParticipationController extends AbstractController {
 	 * @return void
 	 */
 	public function deleteAction(\Visol\EasyvoteCompetition\Domain\Model\Participation $participation) {
+		// todo check participationEndDate
 		if ($communityUser = $this->getLoggedInUser()) {
 			if ($communityUser === $participation->getCommunityUser()) {
 				$competition = $participation->getCompetition();

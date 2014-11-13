@@ -114,6 +114,12 @@ class Competition extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $participations = NULL;
 
 	/**
+	 * @var bool
+	 * @transient
+	 */
+	protected $votingPeriodIsActive = FALSE;
+
+	/**
 	 * __construct
 	 */
 	public function __construct() {
@@ -359,6 +365,17 @@ class Competition extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setParticipationExplanation($participationExplanation) {
 		$this->participationExplanation = $participationExplanation;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function getVotingPeriodIsActive() {
+		if (time() > $this->getParticipationEndDate()->getTimestamp()) {
+			// if participation period expired, voting is inactive
+			return FALSE;
+		}
+		return TRUE;
 	}
 
 }
