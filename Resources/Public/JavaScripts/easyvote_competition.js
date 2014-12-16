@@ -75,7 +75,6 @@ var EasyvoteCompetition = {
 	},
 	/* Infinite scrolling for participations */
 	bindInfiniteScrolling: function() {
-		console.log('hier');
 		$('.listParticipationsContainer').jscroll({
 			autoTrigger: false,
 			nextSelector: '.records-navigation a',
