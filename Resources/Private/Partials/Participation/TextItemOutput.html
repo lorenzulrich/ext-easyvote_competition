@@ -45,18 +45,28 @@
 					<f:case default="TRUE"></f:case>
 				</f:switch>
 				<div class="action share">
-					<a href="#" class="hasModal shareTrigger">
-						<i class="evicon-share hasTooltip"></i>
-						<div class="hidden">
-							Teile diesen Beitrag
-						</div>
-					</a>
-					<div class="hidden">
-						<a class="pull-right qtip-close" aria-label="schliessen">
-							<i class="evicon-cancel"></i>
-						</a>
-						<f:render partial="Participation/Share" arguments="{_all}"/>
-					</div>
+					<f:if condition="{settings.context} != 'app'">
+						<f:then>
+							<a href="#" class="hasModal shareTrigger">
+								<i class="evicon-share hasTooltip"></i>
+								<div class="hidden">
+									Teile diesen Beitrag
+								</div>
+							</a>
+							<div class="hidden">
+								<a class="pull-right qtip-close" aria-label="schliessen">
+									<i class="evicon-cancel"></i>
+								</a>
+								<f:render partial="Participation/Share" arguments="{_all}"/>
+							</div>
+						</f:then>
+						<f:else>
+							<a href="share://title={participation.title -> f:format.urlencode()}&text={participation.socialSharingText -> f:format.urlencode()}&url={f:uri.page(pageUid:settings.competitionHomePid, absolute: 'TRUE', additionalParams:{tx_easyvotecompetition_competitiondetail:{participation:participation.uid}}) -> f:format.urlencode()}">
+								<i class="evicon-share"></i>
+							</a>
+						</f:else>
+					</f:if>
+
 				</div>
 			</div>
 			<div class="communityuser-name">{participation.communityUser.firstName} <f:format.crop maxCharacters="1" append="" respectWordBoundaries="FALSE">{participation.communityUser.lastName}</f:format.crop>. <f:if condition="{participation.communityUser.citySelection}">aus {participation.communityUser.citySelection.name}</f:if></div>
