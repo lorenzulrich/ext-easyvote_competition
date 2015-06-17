@@ -398,6 +398,7 @@ class Participation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		$standaloneView = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Fluid\View\StandaloneView');
 		$standaloneView->setTemplateSource($this->getCompetition()->getSocialSharingText());
 		$standaloneView->assign('communityUser', $this->communityUser);
+		$standaloneView->assign('participation', $this);
 		return $standaloneView->render();
 	}
 
