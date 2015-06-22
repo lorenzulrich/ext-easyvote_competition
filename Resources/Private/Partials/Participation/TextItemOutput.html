@@ -71,7 +71,7 @@
 			</div>
 			<div class="communityuser-name">{participation.communityUser.firstName} <f:format.crop maxCharacters="1" append="" respectWordBoundaries="FALSE">{participation.communityUser.lastName}</f:format.crop>. <f:if condition="{participation.communityUser.citySelection}">aus {participation.communityUser.citySelection.name}</f:if></div>
 			<h2>{participation.title}</h2>
-			<p>{participation.description}</p>
+			<p><f:format.nl2br>{participation.description}</f:format.nl2br></p>
 			<f:render partial="Participation/Voting" arguments="{_all}"/>
 		</div>
 	</div>
