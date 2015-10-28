@@ -13,6 +13,7 @@ CREATE TABLE tx_easyvotecompetition_domain_model_competition (
 	social_sharing_text text NOT NULL,
 	participation_button_text varchar(255) DEFAULT '' NOT NULL,
 	participation_explanation text NOT NULL,
+	participation_input_label varchar(255) DEFAULT '' NOT NULL,
 	participation_terms text NOT NULL,
 
 	image int(11) unsigned NOT NULL default '0',

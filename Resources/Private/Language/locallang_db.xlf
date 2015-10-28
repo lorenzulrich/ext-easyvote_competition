@@ -42,6 +42,9 @@
 			<trans-unit id="tx_easyvotecompetition_domain_model_competition.participation_explanation">
 				<source>Erklärung für Teilnehmende (Neue Teilnahme)</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_competition.participation_input_label">
+				<source>Label für Beitrag (Neue Teilnahme)</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvotecompetition_domain_model_competition.participation_terms">
 				<source>Bedingungen für Teilnehmende (vor Freigabe)</source>
 			</trans-unit>

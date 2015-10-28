@@ -89,6 +89,11 @@ class Competition extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * @var string
 	 */
+	protected $participationInputLabel;
+
+	/**
+	 * @var string
+	 */
 	protected $participationTerms;
 
 	/**
@@ -365,6 +370,20 @@ class Competition extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setParticipationExplanation($participationExplanation) {
 		$this->participationExplanation = $participationExplanation;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getParticipationInputLabel() {
+		return $this->participationInputLabel;
+	}
+
+	/**
+	 * @param string $participationInputLabel
+	 */
+	public function setParticipationInputLabel($participationInputLabel) {
+		$this->participationInputLabel = $participationInputLabel;
 	}
 
 	/**

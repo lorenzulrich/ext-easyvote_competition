@@ -9,7 +9,7 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_competition'] = array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title_short, title_long, description, image, voting_frequency, participation_end_date, participations',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, type, title_short, title_long, description;;;richtext:rte_transform[mode=ts_links], image, social_sharing_text, participation_button_text, participation_explanation;;;richtext:rte_transform[mode=ts_links], participation_terms;;;richtext:rte_transform[mode=ts_links], voting_frequency, participation_end_date, participations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, type, title_short, title_long, description;;;richtext:rte_transform[mode=ts_links], image, social_sharing_text, participation_button_text, participation_explanation;;;richtext:rte_transform[mode=ts_links], participation_input_label, participation_terms;;;richtext:rte_transform[mode=ts_links], voting_frequency, participation_end_date, participations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -179,6 +179,15 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_competition'] = array(
 						'type' => 'script'
 					)
 				)
+			),
+		),
+		'participation_input_label' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_competition.participation_input_label',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim,required'
 			),
 		),
 		'participation_terms' => array(
