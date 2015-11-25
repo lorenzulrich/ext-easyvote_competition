@@ -4,7 +4,11 @@
 
 <f:section name="main">
 	<div class="competition-detail">
-		<f:render partial="Competition/Introduction" arguments="{competition:competition, settings:settings}" />
+		<f:if condition="{settings.hideCompetitionIntroduction}">
+			<f:else>
+				<f:render partial="Competition/Introduction" arguments="{competition:competition, settings:settings}" />
+			</f:else>
+		</f:if>
 		<f:if condition="{participation.uid} > 0">
 			<f:comment>
 				A single participation is selected, so display it as first item

@@ -27,6 +27,14 @@
 							</config>
 						</TCEforms>
 					</settings.competition>
+					<settings.hideCompetitionIntroduction>
+						<TCEforms>
+							<label>Wettbewerbs-Einleitung verbergen</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.hideCompetitionIntroduction>
 				</el>
 			</ROOT>
 		</sDEF>
