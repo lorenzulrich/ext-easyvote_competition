@@ -55,6 +55,13 @@ class Participation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $description = '';
 
     /**
+     * Additional content
+     *
+     * @var string
+     */
+    protected $additionalContent = '';
+
+    /**
      * Image
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
@@ -198,6 +205,22 @@ class Participation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdditionalContent()
+    {
+        return $this->additionalContent;
+    }
+
+    /**
+     * @param string $additionalContent
+     */
+    public function setAdditionalContent($additionalContent)
+    {
+        $this->additionalContent = $additionalContent;
     }
 
     /**

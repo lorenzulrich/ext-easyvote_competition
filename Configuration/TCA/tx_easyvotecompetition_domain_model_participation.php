@@ -28,7 +28,7 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_participation'] = array(
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, description, image, media, language, disabled, voting_enabled, votes, community_user',
     ),
     'types' => array(
-        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, description, image, media, language, disabled, voting_enabled, votes, cached_votes, cached_rank, community_user, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, description, additional_content, image, media, language, disabled, voting_enabled, votes, cached_votes, cached_rank, community_user, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -122,6 +122,27 @@ $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_participation'] = array(
                 'rows' => 15,
                 'eval' => 'trim'
             )
+        ),
+        'additional_content' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_participation.additional_content',
+            'config' => array(
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 15,
+                'eval' => 'trim',
+                'wizards' => array(
+                    'RTE' => array(
+                        'icon' => 'wizard_rte2.gif',
+                        'notNewRecords'=> 1,
+                        'RTEonly' => 1,
+                        'script' => 'wizard_rte.php',
+                        'title' => 'LLL:EXT:cms/locallang_ttc.xlf:bodytext.W.RTE',
+                        'type' => 'script'
+                    )
+                )
+            ),
+            'defaultExtras' => 'richtext:rte_transform[flag=rte_enabled|mode=ts]'
         ),
         'image' => array(
             'exclude' => 1,

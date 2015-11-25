@@ -72,6 +72,9 @@
 			<trans-unit id="tx_easyvotecompetition_domain_model_participation.description">
 				<source>Description</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvotecompetition_domain_model_participation.additional_content">
+				<source>Additional content</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvotecompetition_domain_model_participation.image">
 				<source>Image</source>
 			</trans-unit>

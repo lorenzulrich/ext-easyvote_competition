@@ -53,6 +53,7 @@ CREATE TABLE tx_easyvotecompetition_domain_model_participation (
 
 	title text NOT NULL,
 	description text NOT NULL,
+	additional_content text NOT NULL,
 	image int(11) unsigned NOT NULL default '0',
 	media varchar(255) DEFAULT '' NOT NULL,
 	language int(11) DEFAULT '0' NOT NULL,
