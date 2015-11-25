@@ -22,6 +22,7 @@ $(function() {
 			}
 			EasyvoteCompetition.bindInfiniteScrolling();
 			Easyvote.bindToolTips();
+			EasyvoteGeneral.bindImageLazyLoading()
 		});
 	}
 

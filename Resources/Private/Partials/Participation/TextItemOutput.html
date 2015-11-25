@@ -11,7 +11,7 @@
 					</f:else>
 				</f:if>
 			</div>
-			<f:render partial="Participation/UserImage" arguments="{user:participation.communityUser, settings:settings, size:'500'}" />
+			<f:render partial="Participation/UserImageRespectingPrivacy" arguments="{user:participation.communityUser, settings:settings, size:'500'}" />
 			<div class="votes-count">
 				<f:if condition="{participation.cachedVotes} == 1">
 					<f:then>
