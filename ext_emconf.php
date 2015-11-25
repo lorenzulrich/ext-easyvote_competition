@@ -11,24 +11,22 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'easyvote Competition',
-	'description' => 'Create and manage competition campaigns',
-	'category' => 'plugin',
-	'author' => 'Lorenz Ulrich, Jonas Renggli',
-	'author_email' => 'lorenz.ulrich@visol.ch, jonas.renggli@visol.ch',
-	'state' => 'stable',
-	'internal' => '',
-	'uploadfolder' => '1',
-	'createDirs' => '',
-	'clearCacheOnLoad' => 0,
-	'version' => '1.0.0',
-	'constraints' => array(
-		'depends' => array(
-			'easyvote' => '1.0.0-1.99.99',
-		),
-		'conflicts' => array(
-		),
-		'suggests' => array(
-		),
-	),
+    'title' => 'easyvote Competition',
+    'description' => 'Create and manage competition campaigns',
+    'category' => 'plugin',
+    'author' => 'Lorenz Ulrich, Jonas Renggli',
+    'author_email' => 'lorenz.ulrich@visol.ch, jonas.renggli@visol.ch',
+    'state' => 'stable',
+    'internal' => '',
+    'uploadfolder' => '1',
+    'createDirs' => '',
+    'clearCacheOnLoad' => 0,
+    'version' => '1.0.0',
+    'constraints' => array(
+        'depends' => array(
+            'easyvote' => '1.0.0-1.99.99',
+        ),
+        'conflicts' => array(),
+        'suggests' => array(),
+    ),
 );

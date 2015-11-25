@@ -2,30 +2,30 @@
 
 namespace Visol\EasyvoteCompetition\Tests\Unit\Domain\Model;
 
-/***************************************************************
- *  Copyright notice
- *
- *  (c) 2014 Lorenz Ulrich <lorenz.ulrich@visol.ch>, visol digitale Dienstleistungen GmbH
- *           Jonas Renggli <jonas.renggli@visol.ch>, visol digitale Dienstleistungen GmbH
- *
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+    /***************************************************************
+     *  Copyright notice
+     *
+     *  (c) 2014 Lorenz Ulrich <lorenz.ulrich@visol.ch>, visol digitale Dienstleistungen GmbH
+     *           Jonas Renggli <jonas.renggli@visol.ch>, visol digitale Dienstleistungen GmbH
+     *
+     *  All rights reserved
+     *
+     *  This script is part of the TYPO3 project. The TYPO3 project is
+     *  free software; you can redistribute it and/or modify
+     *  it under the terms of the GNU General Public License as published by
+     *  the Free Software Foundation; either version 2 of the License, or
+     *  (at your option) any later version.
+     *
+     *  The GNU General Public License can be found at
+     *  http://www.gnu.org/copyleft/gpl.html.
+     *
+     *  This script is distributed in the hope that it will be useful,
+     *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+     *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     *  GNU General Public License for more details.
+     *
+     *  This copyright notice MUST APPEAR in all copies of the script!
+     ***************************************************************/
 
 /**
  * Test case for class \Visol\EasyvoteCompetition\Domain\Model\Vote.
@@ -36,75 +36,86 @@ namespace Visol\EasyvoteCompetition\Tests\Unit\Domain\Model;
  * @author Lorenz Ulrich <lorenz.ulrich@visol.ch>
  * @author Jonas Renggli <jonas.renggli@visol.ch>
  */
-class VoteTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
-	/**
-	 * @var \Visol\EasyvoteCompetition\Domain\Model\Vote
-	 */
-	protected $subject = NULL;
+class VoteTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+{
+    /**
+     * @var \Visol\EasyvoteCompetition\Domain\Model\Vote
+     */
+    protected $subject = null;
 
-	protected function setUp() {
-		$this->subject = new \Visol\EasyvoteCompetition\Domain\Model\Vote();
-	}
+    protected function setUp()
+    {
+        $this->subject = new \Visol\EasyvoteCompetition\Domain\Model\Vote();
+    }
 
-	protected function tearDown() {
-		unset($this->subject);
-	}
+    protected function tearDown()
+    {
+        unset($this->subject);
+    }
 
-	/**
-	 * @test
-	 */
-	public function getCompetitionReturnsInitialValueForCompetition() {
-		$this->assertEquals(
-			NULL,
-			$this->subject->getCompetition()
-		);
-	}
+    /**
+     * @test
+     */
+    public function getCompetitionReturnsInitialValueForCompetition()
+    {
+        $this->assertEquals(
+            null,
+            $this->subject->getCompetition()
+        );
+    }
 
-	/**
-	 * @test
-	 */
-	public function setCompetitionForCompetitionSetsCompetition() {
-		$competitionFixture = new \Visol\EasyvoteCompetition\Domain\Model\Competition();
-		$this->subject->setCompetition($competitionFixture);
+    /**
+     * @test
+     */
+    public function setCompetitionForCompetitionSetsCompetition()
+    {
+        $competitionFixture = new \Visol\EasyvoteCompetition\Domain\Model\Competition();
+        $this->subject->setCompetition($competitionFixture);
 
-		$this->assertAttributeEquals(
-			$competitionFixture,
-			'competition',
-			$this->subject
-		);
-	}
+        $this->assertAttributeEquals(
+            $competitionFixture,
+            'competition',
+            $this->subject
+        );
+    }
 
-	/**
-	 * @test
-	 */
-	public function getParticipationReturnsInitialValueForParticipation() {
-		$this->assertEquals(
-			NULL,
-			$this->subject->getParticipation()
-		);
-	}
+    /**
+     * @test
+     */
+    public function getParticipationReturnsInitialValueForParticipation()
+    {
+        $this->assertEquals(
+            null,
+            $this->subject->getParticipation()
+        );
+    }
 
-	/**
-	 * @test
-	 */
-	public function setParticipationForParticipationSetsParticipation() {
-		$participationFixture = new \Visol\EasyvoteCompetition\Domain\Model\Participation();
-		$this->subject->setParticipation($participationFixture);
+    /**
+     * @test
+     */
+    public function setParticipationForParticipationSetsParticipation()
+    {
+        $participationFixture = new \Visol\EasyvoteCompetition\Domain\Model\Participation();
+        $this->subject->setParticipation($participationFixture);
 
-		$this->assertAttributeEquals(
-			$participationFixture,
-			'participation',
-			$this->subject
-		);
-	}
+        $this->assertAttributeEquals(
+            $participationFixture,
+            'participation',
+            $this->subject
+        );
+    }
 
-	/**
-	 * @test
-	 */
-	public function getCommunityUserReturnsInitialValueForCommunityUser() {	}
+    /**
+     * @test
+     */
+    public function getCommunityUserReturnsInitialValueForCommunityUser()
+    {
+    }
 
-	/**
-	 * @test
-	 */
-	public function setCommunityUserForCommunityUserSetsCommunityUser() {	}
+    /**
+     * @test
+     */
+    public function setCommunityUserForCommunityUserSetsCommunityUser()
+    {
+    }
 }

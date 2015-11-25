@@ -28,74 +28,78 @@ namespace Visol\EasyvoteCompetition\Service;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-class CompetitionService {
+class CompetitionService
+{
 
-	/**
-	 * participationRepository
-	 *
-	 * @var \Visol\EasyvoteCompetition\Domain\Repository\ParticipationRepository
-	 * @inject
-	 */
-	protected $participationRepository = NULL;
+    /**
+     * participationRepository
+     *
+     * @var \Visol\EasyvoteCompetition\Domain\Repository\ParticipationRepository
+     * @inject
+     */
+    protected $participationRepository = null;
 
-	/**
-	 * voteRepository
-	 *
-	 * @var \Visol\EasyvoteCompetition\Domain\Repository\VoteRepository
-	 * @inject
-	 */
-	protected $voteRepository = NULL;
+    /**
+     * voteRepository
+     *
+     * @var \Visol\EasyvoteCompetition\Domain\Repository\VoteRepository
+     * @inject
+     */
+    protected $voteRepository = null;
 
-	public function userCanVoteForParticiation($participationUid) {
-		/** @var \Visol\EasyvoteCompetition\Domain\Model\Participation $participation */
-		$participation = $this->participationRepository->findByUid($participationUid);
-		$communityUser = $this->getCurrentCommunityUser();
-		$votesForUserAndParticipation = $this->voteRepository->findByParticipationAndCommunityUser($participation, $communityUser);
+    public function userCanVoteForParticiation($participationUid)
+    {
+        /** @var \Visol\EasyvoteCompetition\Domain\Model\Participation $participation */
+        $participation = $this->participationRepository->findByUid($participationUid);
+        $communityUser = $this->getCurrentCommunityUser();
+        $votesForUserAndParticipation = $this->voteRepository->findByParticipationAndCommunityUser($participation,
+            $communityUser);
 
-		switch ($participation->getCompetition()->getVotingFrequency()) {
-			case \Visol\EasyvoteCompetition\Domain\Model\Competition::VOTINGFREQUENCY_ONCEPERPARTICIPATION:
-				if (count($votesForUserAndParticipation)) {
-					// we have at least one vote, but only one is allowed, therefore the user cannot vote for this participation
-					return FALSE;
-				} else {
-					return TRUE;
-				}
-				break;
-			case \Visol\EasyvoteCompetition\Domain\Model\Competition::VOTINGFREQUENCY_EVERY24HOURSPERPARTICIPATION:
-				if (count($votesForUserAndParticipation)) {
-					/** @var \Visol\EasyvoteCompetition\Domain\Model\Vote $latestVoteForParticipation */
-					$latestVoteForParticipation = $votesForUserAndParticipation->getFirst();
-					$timestampOfLatestVote = $latestVoteForParticipation->getCrdate()->getTimestamp();
-					if ($timestampOfLatestVote > (time() - 86400)) {
-						// the latest vote was cast within the last 24 hours, so no other vote allowed for now
-						return FALSE;
-					} else {
-						return TRUE;
-					}
-				} else {
-					return TRUE;
-				}
-				break;
-		}
+        switch ($participation->getCompetition()->getVotingFrequency()) {
+            case \Visol\EasyvoteCompetition\Domain\Model\Competition::VOTINGFREQUENCY_ONCEPERPARTICIPATION:
+                if (count($votesForUserAndParticipation)) {
+                    // we have at least one vote, but only one is allowed, therefore the user cannot vote for this participation
+                    return false;
+                } else {
+                    return true;
+                }
+                break;
+            case \Visol\EasyvoteCompetition\Domain\Model\Competition::VOTINGFREQUENCY_EVERY24HOURSPERPARTICIPATION:
+                if (count($votesForUserAndParticipation)) {
+                    /** @var \Visol\EasyvoteCompetition\Domain\Model\Vote $latestVoteForParticipation */
+                    $latestVoteForParticipation = $votesForUserAndParticipation->getFirst();
+                    $timestampOfLatestVote = $latestVoteForParticipation->getCrdate()->getTimestamp();
+                    if ($timestampOfLatestVote > (time() - 86400)) {
+                        // the latest vote was cast within the last 24 hours, so no other vote allowed for now
+                        return false;
+                    } else {
+                        return true;
+                    }
+                } else {
+                    return true;
+                }
+                break;
+        }
 
-	}
+    }
 
-	/**
-	 * @var \Visol\Easyvote\Domain\Repository\CommunityUserRepository
-	 * @inject
-	 */
-	protected $communityUserRepository;
+    /**
+     * @var \Visol\Easyvote\Domain\Repository\CommunityUserRepository
+     * @inject
+     */
+    protected $communityUserRepository;
 
-	/**
-	 * @return null|\Visol\Easyvote\Domain\Model\CommunityUser
-	 */
-	public function getCurrentCommunityUser() {
-		$frontendUserUid = (int)$GLOBALS['TSFE']->fe_user->user['uid'];
-		if ($frontendUserUid > 0) {
-			return $this->communityUserRepository->findByUid($frontendUserUid);
-		} else {
-			return NULL;
-		}
-	}
+    /**
+     * @return null|\Visol\Easyvote\Domain\Model\CommunityUser
+     */
+    public function getCurrentCommunityUser()
+    {
+        $frontendUserUid = (int)$GLOBALS['TSFE']->fe_user->user['uid'];
+        if ($frontendUserUid > 0) {
+            return $this->communityUserRepository->findByUid($frontendUserUid);
+        } else {
+            return null;
+        }
+    }
 
 }
