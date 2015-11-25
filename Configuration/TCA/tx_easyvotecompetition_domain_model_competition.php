@@ -4,7 +4,27 @@ if (!defined('TYPO3_MODE')) {
 }
 
 $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_competition'] = array(
-    'ctrl' => $GLOBALS['TCA']['tx_easyvotecompetition_domain_model_competition']['ctrl'],
+    'ctrl' => array(
+        'title' => 'LLL:EXT:easyvote_competition/Resources/Private/Language/locallang_db.xlf:tx_easyvotecompetition_domain_model_competition',
+        'label' => 'title_short',
+        'tstamp' => 'tstamp',
+        'crdate' => 'crdate',
+        'cruser_id' => 'cruser_id',
+        'dividers2tabs' => true,
+        'sortby' => 'sorting',
+        'languageField' => 'sys_language_uid',
+        'transOrigPointerField' => 'l10n_parent',
+        'transOrigDiffSourceField' => 'l10n_diffsource',
+        'delete' => 'deleted',
+        'enablecolumns' => array(
+            'disabled' => 'hidden',
+            'starttime' => 'starttime',
+            'endtime' => 'endtime',
+        ),
+        'searchFields' => 'type,title_short,title_long,description,image,voting_frequency,participation_end_date,participations,',
+        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('easyvote_competition') . 'Configuration/TCA/Competition.php',
+        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('easyvote_competition') . 'Resources/Public/Icons/tx_easyvotecompetition_domain_model_competition.gif'
+    ),
     'interface' => array(
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title_short, title_long, description, image, voting_frequency, participation_end_date, participations',
     ),
