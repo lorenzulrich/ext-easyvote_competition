@@ -1,91 +1,103 @@
-<div class="participation-{participation.uid} content-box content-box-static">
-	<div class="header-two-cols">
-		<div class="col-left">
-			<div class="position-badge">
-				<f:if condition="{participation.cachedRank} > 0">
-					<f:then>
-						<div class="inner">{participation.cachedRank}.</div>
-					</f:then>
-					<f:else>
-						<div class="inner">X.</div>
-					</f:else>
-				</f:if>
-			</div>
-			<f:if condition="{participation.communityUser}">
-				<f:then>
-					<f:render partial="Participation/UserImageRespectingPrivacy" arguments="{user:participation.communityUser, settings:settings, size:'500'}" />
-				</f:then>
-				<f:else>
-					<f:if condition="{participation.image}">
-						<img class="user-image lazy" alt="{participation.title}" width="500" height="500"
-							 src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder.png"
-							 data-original="{f:uri.image(src: '{participation.image.uid}', treatIdAsReference: 1, width: '500' height: '500c')}" />
-					</f:if>
-				</f:else>
-			</f:if>
-			<div class="votes-count">
-				<f:if condition="{participation.cachedVotes} == 1">
-					<f:then>
-						<span class="number">{participation.cachedVotes}</span> Stimme
-					</f:then>
-					<f:else>
-						<span class="number">{participation.cachedVotes}</span> Stimmen
-					</f:else>
-				</f:if>
-			</div>
-		</div>
-		<div class="col-right">
-			<div class="actions">
-				<f:switch expression="{participation.votingEnabled}">
-					<f:case value="0">
-						<div class="action verification-indicator">
-							<i class="evicon-cancel hasTooltip"></i>
-							<div class="hidden">
-								Abstimmen ist für diesen Beitrag deaktiviert.
-							</div>
-						</div>
-					</f:case>
-					<f:case value="2">
-						<div class="action verification-indicator">
-							<i class="evicon-haken hasTooltip"></i>
-							<div class="hidden">
-								Dieser Beitrag wurde verifiziert.
-							</div>
-						</div>
-					</f:case>
-					<f:case default="TRUE"></f:case>
-				</f:switch>
-				<div class="action share">
-					<f:if condition="{settings.context} != 'app'">
+<div class="participation-{participation.uid} content-box {f:if(condition:'{participation.additionalContent}', then:'content-box-expandable', else:'content-box-static')}">
+	<div class="box-teaser">
+		<div class="header-two-cols">
+			<div class="col-left">
+				<div class="position-badge">
+					<f:if condition="{participation.cachedRank} > 0">
 						<f:then>
-							<a href="#" class="hasModal shareTrigger">
-								<i class="evicon-share hasTooltip"></i>
-								<div class="hidden">
-									Teile diesen Beitrag
-								</div>
-							</a>
-							<div class="hidden">
-								<a class="pull-right modal-close" aria-label="schliessen">
-									<i class="evicon-cancel"></i>
-								</a>
-								<f:render partial="Participation/Share" arguments="{_all}"/>
-							</div>
+							<div class="inner">{participation.cachedRank}.</div>
 						</f:then>
 						<f:else>
-							<a href="share://title={participation.title -> f:format.urlencode()}&text={participation.socialSharingText -> f:format.urlencode()}&url={f:uri.page(pageUid:settings.competitionHomePid, absolute: 'TRUE', additionalParams:{tx_easyvotecompetition_competitiondetail:{participation:participation.uid}}) -> f:format.urlencode()}">
-								<i class="evicon-share"></i>
-							</a>
+							<div class="inner">X.</div>
 						</f:else>
 					</f:if>
-
+				</div>
+				<f:if condition="{participation.communityUser}">
+					<f:then>
+						<f:render partial="Participation/UserImageRespectingPrivacy" arguments="{user:participation.communityUser, settings:settings, size:'500'}" />
+					</f:then>
+					<f:else>
+						<f:if condition="{participation.image}">
+							<img class="user-image lazy" alt="{participation.title}" width="500" height="500"
+								 src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder.png"
+								 data-original="{f:uri.image(src: '{participation.image.uid}', treatIdAsReference: 1, width: '500' height: '500c')}" />
+						</f:if>
+					</f:else>
+				</f:if>
+				<div class="votes-count">
+					<f:if condition="{participation.cachedVotes} == 1">
+						<f:then>
+							<span class="number">{participation.cachedVotes}</span> Stimme
+						</f:then>
+						<f:else>
+							<span class="number">{participation.cachedVotes}</span> Stimmen
+						</f:else>
+					</f:if>
 				</div>
 			</div>
-			<f:if condition="{participation.communityUser}">
-				<div class="communityuser-name">{participation.communityUser.firstName} <f:format.crop maxCharacters="1" append="" respectWordBoundaries="FALSE">{participation.communityUser.lastName}</f:format.crop>. <f:if condition="{participation.communityUser.citySelection}">aus {participation.communityUser.citySelection.name}</f:if></div>
-			</f:if>
-			<h2>{participation.title}</h2>
-			<p><f:format.nl2br>{participation.description}</f:format.nl2br></p>
-			<f:render partial="Participation/Voting" arguments="{_all}"/>
+			<div class="col-right">
+				<div class="actions">
+					<f:switch expression="{participation.votingEnabled}">
+						<f:case value="0">
+							<div class="action verification-indicator">
+								<i class="evicon-cancel hasTooltip"></i>
+								<div class="hidden">
+									Abstimmen ist für diesen Beitrag deaktiviert.
+								</div>
+							</div>
+						</f:case>
+						<f:case value="2">
+							<div class="action verification-indicator">
+								<i class="evicon-haken hasTooltip"></i>
+								<div class="hidden">
+									Dieser Beitrag wurde verifiziert.
+								</div>
+							</div>
+						</f:case>
+						<f:case default="TRUE"></f:case>
+					</f:switch>
+					<div class="action share">
+						<f:if condition="{settings.context} != 'app'">
+							<f:then>
+								<a href="#" class="hasModal shareTrigger">
+									<i class="evicon-share hasTooltip"></i>
+									<div class="hidden">
+										Teile diesen Beitrag
+									</div>
+								</a>
+								<div class="hidden">
+									<a class="pull-right modal-close" aria-label="schliessen">
+										<i class="evicon-cancel"></i>
+									</a>
+									<f:render partial="Participation/Share" arguments="{_all}"/>
+								</div>
+							</f:then>
+							<f:else>
+								<a href="share://title={participation.title -> f:format.urlencode()}&text={participation.socialSharingText -> f:format.urlencode()}&url={f:uri.page(pageUid:settings.competitionHomePid, absolute: 'TRUE', additionalParams:{tx_easyvotecompetition_competitiondetail:{participation:participation.uid}}) -> f:format.urlencode()}">
+									<i class="evicon-share"></i>
+								</a>
+							</f:else>
+						</f:if>
+
+					</div>
+					<f:if condition="{participation.additionalContent}">
+						<div class="action toggle handle">
+							<i class="evicon-down-open"></i>
+						</div>
+					</f:if>
+				</div>
+				<f:if condition="{participation.communityUser}">
+					<div class="communityuser-name">{participation.communityUser.firstName} <f:format.crop maxCharacters="1" append="" respectWordBoundaries="FALSE">{participation.communityUser.lastName}</f:format.crop>. <f:if condition="{participation.communityUser.citySelection}">aus {participation.communityUser.citySelection.name}</f:if></div>
+				</f:if>
+				<h2>{participation.title}</h2>
+				<p><f:format.nl2br>{participation.description}</f:format.nl2br></p>
+				<f:render partial="Participation/Voting" arguments="{_all}"/>
+			</div>
 		</div>
 	</div>
+	<f:if condition="{participation.additionalContent}">
+		<div class="box-content">
+			<f:format.html>{participation.additionalContent}</f:format.html>
+		</div>
+	</f:if>
 </div>
