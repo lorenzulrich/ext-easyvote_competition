@@ -11,7 +11,18 @@
 					</f:else>
 				</f:if>
 			</div>
-			<f:render partial="Participation/UserImageRespectingPrivacy" arguments="{user:participation.communityUser, settings:settings, size:'500'}" />
+			<f:if condition="{participation.communityUser}">
+				<f:then>
+					<f:render partial="Participation/UserImageRespectingPrivacy" arguments="{user:participation.communityUser, settings:settings, size:'500'}" />
+				</f:then>
+				<f:else>
+					<f:if condition="{participation.image}">
+						<img class="user-image lazy" alt="{participation.title}" width="500" height="500"
+							 src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder.png"
+							 data-original="{f:uri.image(src: '{participation.image.uid}', treatIdAsReference: 1, width: '500' height: '500c')}" />
+					</f:if>
+				</f:else>
+			</f:if>
 			<div class="votes-count">
 				<f:if condition="{participation.cachedVotes} == 1">
 					<f:then>
