@@ -7,23 +7,23 @@
 					<f:if condition="{participation.userCanVote}">
 						<f:then>
 							<a class="voteForParticipation hasTooltip" href="#" data-participation="{participation.uid}">
-								<i class="evicon-like voting-enabled"></i> abstimmen
+								<i class="evicon-like voting-enabled"></i> <f:translate key="voting.vote" />
 							</a>
 							<div class="hidden">
 								<f:switch expression="{participation.competition.votingFrequency}">
-									<f:case value="2">Du kannst jeden Tag einmal für diesen Beitrag stimmen.</f:case>
-									<f:case default="TRUE">Du kannst insgesamt ein Mal für diesen Beitrag stimmen.</f:case>
+									<f:case value="2"><f:translate key="voting.votingAllowedOncePerDay" /></f:case>
+									<f:case default="TRUE"><f:translate key="voting.votingAllowedOnceOnly" /></f:case>
 								</f:switch>
 							</div>
 						</f:then>
 						<f:else>
 							<a class="voteForParticipation-alreadyVoted hasTooltip" href="#" data-participation="{participation.uid}">
-								<i class="evicon-like voting-disabled"></i> Du hast schon abgestimmt
+								<i class="evicon-like voting-disabled"></i> <f:translate key="voting.alreadyVoted" />
 							</a>
 							<div class="hidden">
 								<f:switch expression="{participation.competition.votingFrequency}">
-									<f:case value="2">Du kannst pro Tag nur einmal für diesen Beitrag stimmen.</f:case>
-									<f:case default="TRUE">Du kannst nur einmal für diesen Beitrag stimmen.</f:case>
+									<f:case value="2"><f:translate key="voting.votingAllowedOncePerDay" /></f:case>
+									<f:case default="TRUE"><f:translate key="voting.votingAllowedOnceOnly" /></f:case>
 								</f:switch>
 							</div>
 						</f:else>
@@ -31,7 +31,7 @@
 				</f:then>
 				<f:else>
 					<a class="voteForParticipation-notAuthenticated" href="#" data-participation="{participation.uid}">
-						<i class="evicon-like voting-disabled"></i> anmelden um abzustimmen
+						<i class="evicon-like voting-disabled"></i> <f:translate key="voting.loginToVote" />
 					</a>
 				</f:else>
 			</f:if>

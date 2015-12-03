@@ -69,6 +69,21 @@
 			<trans-unit id="tx_easyvotecompetition_domain_model_vote.community_user">
 				<source>Community User</source>
 			</trans-unit>
+			<trans-unit id="voting.vote">
+				<source>abstimmen</source>
+			</trans-unit>
+			<trans-unit id="voting.votingAllowedOncePerDay">
+				<source>Du kannst jeden Tag einmal für diesen Beitrag stimmen.</source>
+			</trans-unit>
+			<trans-unit id="voting.votingAllowedOnceOnly">
+				<source>Du kannst insgesamt ein Mal für diesen Beitrag stimmen.</source>
+			</trans-unit>
+			<trans-unit id="voting.alreadyVoted">
+				<source>Du hast schon abgestimmt</source>
+			</trans-unit>
+			<trans-unit id="voting.loginToVote">
+				<source>anmelden um abzustimmen</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

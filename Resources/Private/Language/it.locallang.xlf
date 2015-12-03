@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-09-23T10:36:10Z" product-name="easyvote_competition">
+		<header/>
+		<body>
+			<trans-unit id="voting.vote">
+				<target>Votare</target>
+			</trans-unit>
+			<trans-unit id="voting.votingAllowedOncePerDay">
+				<target>Puoi votare una volta al giorno.</target>
+			</trans-unit>
+			<trans-unit id="voting.votingAllowedOnceOnly">
+				<target>Puoi votare una volta.</target>
+			</trans-unit>
+			<trans-unit id="voting.alreadyVoted">
+				<target>Hai già votato</target>
+			</trans-unit>
+			<trans-unit id="voting.loginToVote">
+				<target>accedi per poter votare</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
