@@ -27,10 +27,10 @@
 				<div class="votes-count">
 					<f:if condition="{participation.cachedVotes} == 1">
 						<f:then>
-							<span class="number">{participation.cachedVotes}</span> Stimme
+							<span class="number">{participation.cachedVotes}</span> <f:translate key="participation.vote" />
 						</f:then>
 						<f:else>
-							<span class="number">{participation.cachedVotes}</span> Stimmen
+							<span class="number">{participation.cachedVotes}</span> <f:translate key="participation.votes" />
 						</f:else>
 					</f:if>
 				</div>
@@ -42,7 +42,7 @@
 							<div class="action verification-indicator">
 								<i class="evicon-cancel hasTooltip"></i>
 								<div class="hidden">
-									Abstimmen ist für diesen Beitrag deaktiviert.
+									<f:translate key="participation.votingInactive" />
 								</div>
 							</div>
 						</f:case>
@@ -50,7 +50,7 @@
 							<div class="action verification-indicator">
 								<i class="evicon-haken hasTooltip"></i>
 								<div class="hidden">
-									Dieser Beitrag wurde verifiziert.
+									<f:translate key="participation.verified" />
 								</div>
 							</div>
 						</f:case>
@@ -62,7 +62,7 @@
 								<a href="#" class="hasModal shareTrigger">
 									<i class="evicon-share hasTooltip"></i>
 									<div class="hidden">
-										Teile diesen Beitrag
+										<f:translate key="participation.share" />
 									</div>
 								</a>
 								<div class="hidden">

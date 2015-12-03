@@ -18,6 +18,21 @@
 			<trans-unit id="voting.loginToVote">
 				<target>anmelden um abzustimmen</target>
 			</trans-unit>
+			<trans-unit id="participation.vote">
+				<target>Stimme</target>
+			</trans-unit>
+			<trans-unit id="participation.votes">
+				<target>Stimmen</target>
+			</trans-unit>
+			<trans-unit id="participation.votingInactive">
+				<target>Abstimmen ist für diesen Beitrag deaktiviert.</target>
+			</trans-unit>
+			<trans-unit id="participation.verified">
+				<target>Dieser Beitrag wurde verifiziert.</target>
+			</trans-unit>
+			<trans-unit id="participation.share">
+				<target>Teilen</target>
+			</trans-unit>			
 		</body>
 	</file>
 </xliff>

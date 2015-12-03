@@ -84,6 +84,21 @@
 			<trans-unit id="voting.loginToVote">
 				<source>anmelden um abzustimmen</source>
 			</trans-unit>
+			<trans-unit id="participation.vote">
+				<source>Stimme</source>
+			</trans-unit>
+			<trans-unit id="participation.votes">
+				<source>Stimmen</source>
+			</trans-unit>
+			<trans-unit id="participation.votingInactive">
+				<source>Abstimmen ist für diesen Beitrag deaktiviert.</source>
+			</trans-unit>
+			<trans-unit id="participation.verified">
+				<source>Dieser Beitrag wurde verifiziert.</source>
+			</trans-unit>
+			<trans-unit id="participation.share">
+				<source>Teilen</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

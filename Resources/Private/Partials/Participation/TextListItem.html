@@ -13,7 +13,7 @@
 				</f:else>
 			</f:if>
 			<div class="votes-count">
-				<span class="number"><f:count>{participation.votes}</f:count></span> Stimmen
+				<span class="number"><f:count>{participation.votes}</f:count></span> <f:translate key="participation.share" />
 			</div>
 		</div>
 		<div class="col-right">
@@ -23,7 +23,7 @@
 						<div class="action verification-indicator">
 							<i class="evicon-cancel hasTooltip"></i>
 							<div class="hidden">
-								Abstimmen ist für diesen Beitrag deaktiviert.
+								<f:translate key="participation.votingInactive" />
 							</div>
 						</div>
 					</f:case>
@@ -31,7 +31,7 @@
 						<div class="action verification-indicator">
 							<i class="evicon-haken hasTooltip"></i>
 							<div class="hidden">
-								Dieser Beitrag wurde verifiziert.
+								<f:translate key="participation.verified" />
 							</div>
 						</div>
 					</f:case>
