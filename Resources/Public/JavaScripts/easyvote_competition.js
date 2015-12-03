@@ -40,6 +40,7 @@ $(function() {
 						$listParticipationsContainer.html(data);
 						EasyvoteCompetition.bindInfiniteScrolling();
 						Easyvote.bindToolTips();
+						EasyvoteGeneral.bindImageLazyLoading()
 					});
 				}
 			})
