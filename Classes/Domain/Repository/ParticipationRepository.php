@@ -27,6 +27,7 @@ namespace Visol\EasyvoteCompetition\Domain\Repository;
      *
      *  This copyright notice MUST APPEAR in all copies of the script!
      ***************************************************************/
+use Visol\Easyvote\Domain\Model\CommunityUser;
 
 /**
  * The repository for Participations
@@ -124,4 +125,19 @@ class ParticipationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return true;
     }
 
+	/**
+	 * @param CommunityUser $communityUser
+	 * @param bool $respectStoragePage
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findByCommunityUser(CommunityUser $communityUser, $respectStoragePage = true) {
+		$query = $this->createQuery();
+		if (!$respectStoragePage) {
+			$query->getQuerySettings()->setRespectStoragePage(false);
+		}
+		$query->matching(
+			$query->equals('communityUser', $communityUser)
+		);
+		return $query->execute();
+	}
 }
